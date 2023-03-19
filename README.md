@@ -4,5 +4,5 @@
 ### Viikko 1
 
 
-[Komentorivi.txt]:laskarit/viikko1/komentorivi.txt
+[Komentorivi.txt]:(laskarit/viikko1/komentorivi.txt)
 
