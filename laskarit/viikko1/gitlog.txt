@@ -1,0 +1,95 @@
+commit 4d6daa5ce033af9bcb8d8584e4241af34249efe1
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 13:10:43 2023 +0200
+
+    tiedostoja
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 9edda3cfb3a33f5b2e3808ac8c9f5eb7de792791
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:55:21 2023 +0200
+
+    modified
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 364fa6ac5238185d47392bdf7fda1119db39a430
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:52:50 2023 +0200
+
+    eka ja kolmas
+
+ eka.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 2870587dd86087bcb84da116c66bc4640307dc2b
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:39:17 2023 +0200
+
+    Muutos ja poisto
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit 572d45b6266cc042a743fe427d0f144f2440d8e7
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:36:53 2023 +0200
+
+    tiedosto teksti
+
+ tiedosto.txt | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+commit ee19d8e73d2f0a6e33872562aaf3f010d50ce985
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:26:04 2023 +0200
+
+    stuff
+
+ stuff/joku.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e42ece6f1fbedd48b0c7653960a9e8418fef90bf
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:25:27 2023 +0200
+
+    muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 9be48dfcb37b3ffd43f53e9ed9944ba28b6e365d
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:24:49 2023 +0200
+
+    kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7f97fbcfe8d48d5715e5c3c72ef808bf3127cbf4
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:23:28 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit b0e740bec09b40f09d592b96b17ca5c0934133ed
+Author: Kasper Envalds <kasper.envalds@gmail.com>
+Date:   Sun Mar 19 12:22:14 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
