@@ -1,7 +1,8 @@
-# Tämä on otsikko
+# OHTE, harjoitustyö
 
 
-### Pienempi otsikko
+### Viikko 1
 
+[Komentorivi.txt]:laskarit/viikko1/komentorivi.txt
 
 normiteksti **lihavoitu**   *italis*
