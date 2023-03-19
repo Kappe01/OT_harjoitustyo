@@ -6,3 +6,5 @@
 
 [Komentorivi.txt]:(/laskarit/viikko1/komentorivi.txt)
 
+[gitlog]:(/laskarit/viikko1/gitlog.txt)
+
