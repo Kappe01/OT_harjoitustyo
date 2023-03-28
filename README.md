@@ -1,10 +1,19 @@
-# OHTE, harjoitustyö
+# OHTE, harjoitustyö, LearningApp
 
-## Tehtävät
+Sovelluksen avulla käyttäjä voi harjoitella valitsemiaan aiheita. Sovellusta voi käyttää useampi rekisteröitynyt käyttäjä
 
-### Viikko 1
+## Laskarit
 
-[komentorivi.txt](laskarit/viikko1/komentorivi.txt)
+[Viikko1](laskarit/viikko1/)
 
-[gitlog.txt](laskarit/viikko1/gitlog.txt)
+[Viikko2](laskarit/viikko1/)
+
+## Huomio Python-versiosta
+
+Sovelluksen toiminta on testattu Python-versiolla `3.8`.
+
+## Dokumentaatio
+
+- [Työaikakirjanpito](./Dokumentaatio/tuntikirjanpito.md)
+- [Vaatimusmäärittely](./Dokumentaatio/vaatimusmaarittel.md)
 
