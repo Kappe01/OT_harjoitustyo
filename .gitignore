@@ -2,3 +2,6 @@
 __pycache__
 .coverage
 htmlcov
+
+data/db.sqlite
+data/test-db.sqlite
