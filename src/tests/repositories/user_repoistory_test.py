@@ -29,7 +29,7 @@ class TestUserRepo(unittest.TestCase):
     def test_find_one_user(self):
         user_repo.new_user(self.user_nipsu)
 
-        user = user_repo.find_one_user(self.user_nipsu.username)
+        user = user_repo.find_one_user(self.user_nipsu.username, self.user_nipsu.password)
         
         self.assertEqual(user.username, self.user_nipsu.username)
 

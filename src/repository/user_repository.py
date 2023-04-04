@@ -28,11 +28,11 @@ class UserRepo:
 
         return list(map(get_user_by_row, rows))
     
-    def find_one_user(self, username):
+    def find_one_user(self, user):
         cur = self._conn.cursor()
 
-        cur.execute('SELECT * FROM users WHERE username = ?',
-                    (username, ))
+        cur.execute('SELECT * FROM users WHERE username = ? AND password = ?',
+                    (user.username, user.password))
         
         row = cur.fetchone()
 
