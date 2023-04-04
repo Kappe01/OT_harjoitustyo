@@ -3,3 +3,4 @@
 - Tehty Tietokanta operaatiot User-luokalle sekä Subjects-luokalle.
 - Tehty alustava tietokanta
 - Testattu että käyttäjän lisääminen, poistaminen sekä hakeminen tietokannasta toimii
+- Käyttäjä pystyy luomaan oman käyttäjän, muuta toiminnallisuutta ei ole
