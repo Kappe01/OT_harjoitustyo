@@ -2,6 +2,7 @@ import unittest
 from entities.user import User
 from repository.user_repository import user_repo
 
+
 class TestUserRepo(unittest.TestCase):
     def setUp(self) -> None:
         user_repo.delete_all_users()
@@ -15,7 +16,7 @@ class TestUserRepo(unittest.TestCase):
 
         self.assertEqual(len(users), 2)
         self.assertEqual(users[0].username, self.user_nipsu.username)
-    
+
     def test_delete_one_user(self):
         user_repo.new_user(self.user_muumi)
         users = user_repo.find_all()
@@ -29,8 +30,7 @@ class TestUserRepo(unittest.TestCase):
     def test_find_one_user(self):
         user_repo.new_user(self.user_nipsu)
 
-        user = user_repo.find_one_user(User(self.user_nipsu.username,self.user_nipsu.password))
-        
-        self.assertEqual(user.username, self.user_nipsu.username)
+        user = user_repo.find_one_user(
+            User(self.user_nipsu.username, self.user_nipsu.password))
 
-    
+        self.assertEqual(user.username, self.user_nipsu.username)

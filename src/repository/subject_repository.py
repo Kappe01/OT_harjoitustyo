@@ -1,8 +1,10 @@
 from entities.subjects import Subjects
 from db import get_db_connection
 
+
 def get_subjects_by_row(row):
     return Subjects(row['subject'], row['username']) if row else None
+
 
 class SubjectRepo:
     def __init__(self, conn):
@@ -13,11 +15,11 @@ class SubjectRepo:
 
         cur.execute('INSERT INTO subjects (subject, username) VALUES (?,?)',
                     (subject.subject, subject.username))
-        
+
         self._conn.commit()
 
         return subject
-    
+
     def get_all(self):
         cur = self._conn.cursor()
 
@@ -26,7 +28,7 @@ class SubjectRepo:
         rows = cur.fetchall()
 
         return list(map(get_subjects_by_row, rows))
-    
+
     def get_all_for_user(self, username):
         cur = self._conn.cursor()
 
@@ -38,7 +40,7 @@ class SubjectRepo:
         rows = cur.fetchall()
 
         return list(map(get_subjects_by_row, rows))
-    
+
     def delete_all(self):
         cur = self._conn.cursor()
 
@@ -59,5 +61,6 @@ class SubjectRepo:
         self._conn.commit()
 
         return subject
-    
+
+
 subject_repo = SubjectRepo(get_db_connection())

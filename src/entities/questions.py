@@ -3,5 +3,5 @@ class Question:
         self.question = question
         self.subject = subject
         self.answer = answer
-        self.type = q_type
+        self.q_type = q_type
         self.username = username

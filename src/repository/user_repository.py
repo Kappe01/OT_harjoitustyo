@@ -1,8 +1,10 @@
 from entities.user import User
 from db import get_db_connection
 
+
 def get_user_by_row(row):
     return User(row['username'], row['password']) if row else None
+
 
 class UserRepo:
     def __init__(self, conn):
@@ -13,7 +15,7 @@ class UserRepo:
 
         cur.execute('''
         INSERT INTO users (username, password) VALUES (?,?)''',
-        (user.username, user.password))
+                    (user.username, user.password))
 
         self._conn.commit()
 
@@ -27,17 +29,17 @@ class UserRepo:
         rows = cur.fetchall()
 
         return list(map(get_user_by_row, rows))
-    
+
     def find_one_user(self, user):
         cur = self._conn.cursor()
 
         cur.execute('SELECT * FROM users WHERE username = ? AND password = ?',
                     (user.username, user.password))
-        
+
         row = cur.fetchone()
 
         return get_user_by_row(row)
-    
+
     def delete_one_user(self, username):
         cur = self._conn.cursor()
 
@@ -52,7 +54,8 @@ class UserRepo:
         cur = self._conn.cursor()
 
         cur.execute('DELETE FROM users')
-        
+
         self._conn.commit()
+
 
 user_repo = UserRepo(get_db_connection())

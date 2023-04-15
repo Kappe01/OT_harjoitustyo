@@ -4,8 +4,10 @@ from config import DB_FILEPATH
 connection = sqlite3.connect(DB_FILEPATH)
 connection.row_factory = sqlite3.Row
 
+
 def get_db_connection():
     return connection
+
 
 def drop_tables(conn):
     cur = conn.cursor()
@@ -15,6 +17,7 @@ def drop_tables(conn):
     cur.execute('DROP TABLE IF EXISTS questions;')
 
     conn.commit()
+
 
 def create_tables(conn):
     cur = conn.cursor()
@@ -42,11 +45,13 @@ def create_tables(conn):
 
     conn.commit()
 
+
 def init_db():
     conn = get_db_connection()
 
     drop_tables(conn)
     create_tables(conn)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     init_db()
