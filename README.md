@@ -11,6 +11,7 @@ Sovelluksen toiminta on testattu Python-versiolla `3.8`.
 - [Työaikakirjanpito](./Dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](./Dokumentaatio/vaatimusmaarittely.md)
 - [Changlelog](./Dokumentaatio/changelog.md)
+- [Arkkitehtuuri](./Dokumentaatio/arkkitehtuuri.md)
 
 ## Asennus
 
@@ -56,3 +57,12 @@ poetry run invoke coverage-report
 ```
 
 Raportti generoituu _htmlcov_-hakemistoon.
+
+### Pylint
+
+Tarkistukset koodin laadusta voi suorittaa komennolla:
+
+```bash
+poetry run invoke lint
+```
+
