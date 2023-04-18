@@ -4,7 +4,7 @@ Sovelluksen avulla käyttäjä voi harjoitella valitsemiaan aiheita. Sekä lisä
 
 ## Huomio Python-versiosta
 
-Sovelluksen toiminta on testattu Python-versiolla `3.8`.
+Sovelluksen toiminta on testattu Python-versiolla `3.8` sekä `3.10`. wxPythonin asennus kestää pitkään, mutta asentuu kyllä testattu virtuaalityöasemalla.
 
 ## Dokumentaatio
 
