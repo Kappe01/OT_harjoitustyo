@@ -10,3 +10,4 @@
 - Käyttäjä pystyy aloittamaan kysymyksiin vastaamisen.
 - Käyttäjä näkee mihin on vastattu oikein ja mihin väärin
 - Lisätty testikattavuutta
+- Aloitettu arkkitehtuuri.md tiedoston tekoa
