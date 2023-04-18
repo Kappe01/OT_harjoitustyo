@@ -8,4 +8,5 @@
 | 3.4. | 2    | Tehty alustava UI |
 | 4.4. | 2    | Yhdistetty UI ja sovelluslogiikka |
 | 15.4. | 5   | Kysymysten vastaaminen tehty |
-| yht   | 16   | | 
+| 18.4. | 1   | Arkkitehtuurin teko  |
+| yht   | 17   | | 
