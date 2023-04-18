@@ -1,9 +1,9 @@
 # Sovelluksen arkkitehtuuri
 
-## Rakenne
+## Rakenne 
 
-## Käyttöliittymä
+Koodin pakkausrakenne on seuraavanlainen:
 
-## Sovelluslogiikka
+![Pakkausrakenne](./kuvat/arkkitehtuuri.png)
 
-## Päätoiminnallisuudet
+UI sisältää käyttöliittymän, services sisältää sovelluslogiikan, repository sisältää tietokanta koodin ja entities sisältää luokkia jotka kuvaavat eri tietokanta tauluja joihin tiedot tallennetaan.
