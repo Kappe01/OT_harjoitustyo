@@ -11,3 +11,7 @@
 - Käyttäjä näkee mihin on vastattu oikein ja mihin väärin
 - Lisätty testikattavuutta
 - Aloitettu arkkitehtuuri.md tiedoston tekoa
+
+## Viikko 5
+
+- Muutettu UI wxpythonista tkinteriin

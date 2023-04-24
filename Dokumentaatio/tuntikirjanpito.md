@@ -9,4 +9,5 @@
 | 4.4. | 2    | Yhdistetty UI ja sovelluslogiikka |
 | 15.4. | 5   | Kysymysten vastaaminen tehty |
 | 18.4. | 1   | Arkkitehtuurin teko  |
-| yht   | 17   | | 
+| 23.4. | 5   | wxpython -> tkinter |
+| yht   | 22   | | 
