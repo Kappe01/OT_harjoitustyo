@@ -1,13 +1,16 @@
-import wx
-from services.learning_services import MainClass
+from tkinter import Tk
+from ui.ui import ui
 
 
-def start():
-    app = wx.App()
-    frame = MainClass()
-    frame.Show()
-    app.MainLoop()
+def main():
+    window = Tk()
+    window.title("Learning app")
+
+    ui_view = ui(window)
+    ui_view.start()
+
+    window.mainloop()
 
 
-if __name__ == '__main__':
-    start()
+if __name__ == "__main__":
+    main()
