@@ -6,6 +6,10 @@ Sovelluksen avulla käyttäjä voi harjoitella valitsemiaan aiheita. Sekä lisä
 
 Sovelluksen toiminta on testattu Python-versiolla `3.8`.
 
+## Release
+
+- [Release 1](https://github.com/Kappe01/OT_harjoitustyo/releases/tag/viikko5)
+
 ## Dokumentaatio
 
 - [Työaikakirjanpito](./Dokumentaatio/tuntikirjanpito.md)
