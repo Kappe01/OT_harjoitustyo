@@ -14,24 +14,29 @@ from repository.question_repository import (
     question_repo as default_question_repo
 )
 
+
 class InvalidCredentialsError(Exception):
     pass
+
 
 class UsernameExistsError(Exception):
     pass
 
+
 class QuestionExistserror(Exception):
     pass
+
 
 class NoSubjectsChosenError(Exception):
     pass
 
+
 class LearningService:
     def __init__(
             self,
-            user_repo = default_user_repo,
-            subject_repo = default_subject_repo,
-            question_repo = default_question_repo
+            user_repo=default_user_repo,
+            subject_repo=default_subject_repo,
+            question_repo=default_question_repo
     ):
         self._user = None
         self._user_repo = user_repo
@@ -39,6 +44,7 @@ class LearningService:
         self._question_repo = question_repo
         self._chosen_subjects = []
         self._questions = []
+        self._results = []
 
     def default_questions(self):
         try:
@@ -48,7 +54,7 @@ class LearningService:
                 Subjects('Physics', 'all'))
             self._subject_repo.new_subject(
                 Subjects('Programming', 'all'))
-            
+
             self._question_repo.create(
                 Question('What is 1+1', 'Maths', '2',
                          'Text', 'All'))
@@ -65,7 +71,7 @@ class LearningService:
             self._question_repo.create(Question(
                 'What is the unit for energy?', 'Physics', 'Joule (J)', 'Text', 'All'))
             self._question_repo.create(Question('What are the two main components of a generator?',
-                                 'Physics', 'A coil and a magnet', 'Text', 'All'))
+                                                'Physics', 'A coil and a magnet', 'Text', 'All'))
 
             self._question_repo.create(Question(
                 'What is the timecomplexity of a for loop?',
@@ -85,11 +91,11 @@ class LearningService:
 
         if not user or user.password != password:
             raise InvalidCredentialsError('Invalid username or password!')
-        
+
         self._user = user
 
         return user
-    
+
     def add_subject_to_list(self, subject, check):
         if check:
             self._chosen_subjects.append(subject)
@@ -99,13 +105,13 @@ class LearningService:
 
     def get_current_user(self):
         return self._user
-    
+
     def get_users(self):
         return self._user_repo.find_all()
-    
+
     def get_subjects(self):
         return self._subject_repo.get_all_for_user(self._user.username)
-    
+
     def logout(self):
         self._user = None
 
@@ -114,31 +120,38 @@ class LearningService:
 
         if existing_user:
             raise UsernameExistsError(f'Username {username} already exists')
-        
+
         user = self._user_repo.new_user(User(username, password))
 
         if login:
             self._user = user
 
         return user
-    
+
     def add_question(self, question, subject, q_type, answer):
         try:
-            question = self._question_repo.create(Question(question, subject, answer, q_type, self._user.username))
+            question = self._question_repo.create(
+                Question(question, subject, answer, q_type, self._user.username))
         except:
             raise QuestionExistserror(f'Question already exists')
         return question
-    
+
     def get_questions(self, amount):
-        print(len(self._chosen_subjects), self._chosen_subjects)
         if len(self._chosen_subjects) == 0:
             raise NoSubjectsChosenError('You have not chosen any subjects!')
-        
-        self._questions = self._question_repo.get_questions([self._user.username, *[i for i in self._chosen_subjects], amount])
 
+        self._questions = self._question_repo.get_questions(
+            [self._user.username, *[i for i in self._chosen_subjects], amount])
         return self._questions
-    
+
     def get_current_questions(self):
         return self._questions
+
+    def result(self, subject, question, answer):
+        self._results.append([subject, question, answer])
+
+    def get_results(self):
+        return self._results
+
 
 learning_service = LearningService()

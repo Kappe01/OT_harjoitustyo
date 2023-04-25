@@ -1,6 +1,7 @@
 from tkinter import ttk, StringVar, constants
 from services.learning_services import learning_service, UsernameExistsError
 
+
 class CreateUserView:
     def __init__(self, root, handle_create_user, handle_show_login_view):
         self._root = root
@@ -64,16 +65,19 @@ class CreateUserView:
 
         self._error_variable = StringVar(self._frame)
 
-        self._error_label = ttk.Label(master=self._frame, textvariable=self._error_variable, foreground='red')
+        self._error_label = ttk.Label(
+            master=self._frame, textvariable=self._error_variable, foreground='red')
 
         self._error_label.grid(padx=5, pady=5)
 
         self._init_username_field()
         self._init_password_field()
 
-        create_user_btn = ttk.Button(master=self._frame, text='Create', command=self._create_user_handler)
+        create_user_btn = ttk.Button(
+            master=self._frame, text='Create', command=self._create_user_handler)
 
-        login_btn = ttk.Button(master= self._frame, text='Login', command=self._handle_show_login_view)
+        login_btn = ttk.Button(
+            master=self._frame, text='Login', command=self._handle_show_login_view)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
 

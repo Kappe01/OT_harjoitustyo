@@ -1,8 +1,10 @@
 from tkinter import ttk, constants, StringVar
 from services.learning_services import learning_service, QuestionExistserror
 
+
 class AnswerEntryField:
     '''Useless atm but still here if I decide to add multiple question types'''
+
     def __init__(self, root, q_type, answer_handler):
         self._root = root
         self._q_type = 'Text'
@@ -55,7 +57,7 @@ class AnswerEntryField:
         true_or_false_frame.pack(fill=constants.X)
 
     def _init_choose_all(self):
-        pass # Tee tämä loppuun
+        pass  # Tee tämä loppuun
 
     def _init(self):
         self._frame = ttk.Frame(master=self._root)
@@ -65,7 +67,7 @@ class AnswerEntryField:
 
         elif self._q_type == 'True or False':
             self._init_true_or_false()
-        
+
         else:
             self._init_choose_all()
 
@@ -81,11 +83,10 @@ class NewQuestionView:
         self._subject_entry = None
         self._question_type_entry = None
         self._answer_entry = None
-        #self._answer_entry_view = None
-        #self._answer_entry_frame = None
+        # self._answer_entry_view = None
+        # self._answer_entry_frame = None
         self._error_variable = None
         self._error_label = None
-
 
         self._init()
 
@@ -99,14 +100,16 @@ class NewQuestionView:
         question = self._question_entry.get()
         subject = self._subject_entry.get()
         q_type = self._question_type_entry.get()
-        answer = self._answer_entry.get() #Väliaikainen ratkaisu
-        
+        answer = self._answer_entry.get()  # Väliaikainen ratkaisu
+
         try:
-            learning_service.add_question(question, subject, q_type, answer) #Lisää vielä tapa saada vastaus
+            # Lisää vielä tapa saada vastaus
+            learning_service.add_question(question, subject, q_type, answer)
             self._handle_add_question()
         except QuestionExistserror:
-            self._show_error('Something went wrong with adding the question, check your entrys and try again!')
-    
+            self._show_error(
+                'Something went wrong with adding the question, check your entrys and try again!')
+
     def _show_error(self, message):
         self._error_variable.set(message)
         self._error_label.grid()
@@ -124,20 +127,24 @@ class NewQuestionView:
 
     def _init_subject_field(self):
         subject_label = ttk.Label(master=self._frame, text='Subject:')
-        
+
         subjects = learning_service.get_subjects()
 
         subjects_names = [i.subject for i in subjects]
-        
-        self._subject_entry = ttk.Combobox(master=self._frame, values=subjects_names)
+
+        self._subject_entry = ttk.Combobox(
+            master=self._frame, values=subjects_names)
 
         subject_label.grid(padx=5, pady=5, sticky=constants.W)
         self._subject_entry.grid(padx=5, pady=5, sticky=constants.EW)
 
     def _init_question_type_field(self):
-        question_type_label = ttk.Label(master=self._frame, text='Question type:')
+        question_type_label = ttk.Label(
+            master=self._frame, text='Question type:')
 
-        self._question_type_entry = ttk.Combobox(master=self._frame, values=['Text'])#, 'True or False', 'Choose all correct answers'])
+        # , 'True or False', 'Choose all correct answers'])
+        self._question_type_entry = ttk.Combobox(
+            master=self._frame, values=['Text'])
 
         question_type_label.grid(padx=5, pady=5, sticky=constants.W)
         self._question_type_entry.grid(padx=5, pady=5, sticky=constants.EW)

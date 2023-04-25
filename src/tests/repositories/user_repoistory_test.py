@@ -31,6 +31,6 @@ class TestUserRepo(unittest.TestCase):
         user_repo.new_user(self.user_nipsu)
 
         user = user_repo.find_one_user(
-            User(self.user_nipsu.username, self.user_nipsu.password))
+            self.user_nipsu.username)
 
         self.assertEqual(user.username, self.user_nipsu.username)

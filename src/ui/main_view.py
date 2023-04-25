@@ -1,6 +1,7 @@
 from tkinter import ttk, constants, IntVar, StringVar
 from services.learning_services import learning_service, NoSubjectsChosenError
 
+
 class SubjectListView:
     def __init__(self, root, subjects, checkbox_handler):
         self._root = root
@@ -45,9 +46,10 @@ class SubjectListView:
         for subject in self._subjects:
             self._init_subject(subject)
 
+
 class MainView:
     def __init__(self, root, handle_logout, handle_new_question, handle_question, handle_results_view):
-        self._root =  root
+        self._root = root
         self._handle_logout = handle_logout
         self._handle_new_question = handle_new_question
         self._handle_question = handle_question
@@ -67,7 +69,7 @@ class MainView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _show_error(self, message):
         self._error_variable.set(message)
         self._error_label.grid()
@@ -93,7 +95,7 @@ class MainView:
 
     def _checkbox_handler(self, subject, check):
         learning_service.add_subject_to_list(subject, check)
-    
+
     def _init_subject_list(self):
         if self._subjects_list_view:
             self._subjects_list_view.destroy()
@@ -108,7 +110,7 @@ class MainView:
 
         self._amount_spinbox_field = ttk.Spinbox(
             master=self._frame,
-            values=[str(i) for i in range(1,16)]
+            values=[str(i) for i in range(1, 16)]
         )
         self._amount_spinbox_field.set('1')
         amount_label = ttk.Label(
@@ -176,8 +178,10 @@ class MainView:
             command=self._question_handler
         )
 
+        subjects = learning_service.get_subjects()
+
         new_question_btn.grid(
-            row=0,
+            row=len(subjects)+1,
             column=1,
             padx=5,
             pady=5,
@@ -185,11 +189,11 @@ class MainView:
         )
 
         question_btn.grid(
-           row=0,
-           column=0,
-           padx=5,
-           pady=5,
-           sticky=constants.EW 
+            row=len(subjects)+1,
+            column=0,
+            padx=5,
+            pady=5,
+            sticky=constants.EW
         )
 
     def _init(self):
