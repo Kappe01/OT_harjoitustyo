@@ -40,8 +40,6 @@ class LearningService:
         self._chosen_subjects = []
         self._questions = []
 
-        self.default_questions()
-
     def default_questions(self):
         try:
             self._subject_repo.new_subject(
