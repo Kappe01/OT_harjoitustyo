@@ -2,6 +2,7 @@ from tkinter import ttk, constants, StringVar
 from services.learning_services import learning_service, QuestionExistserror
 
 class AnswerEntryField:
+    '''Useless atm but still here if I decide to add multiple question types'''
     def __init__(self, root, q_type, answer_handler):
         self._root = root
         self._q_type = 'Text'

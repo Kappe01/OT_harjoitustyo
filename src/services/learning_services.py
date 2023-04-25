@@ -23,6 +23,9 @@ class UsernameExistsError(Exception):
 class QuestionExistserror(Exception):
     pass
 
+class NoSubjectsChosenError(Exception):
+    pass
+
 class LearningService:
     def __init__(
             self,
@@ -35,6 +38,7 @@ class LearningService:
         self._subject_repo = subject_repo
         self._question_repo = question_repo
         self._chosen_subjects = []
+        self._questions = []
 
         self.default_questions()
 
@@ -126,5 +130,17 @@ class LearningService:
         except:
             raise QuestionExistserror(f'Question already exists')
         return question
+    
+    def get_questions(self, amount):
+        print(len(self._chosen_subjects), self._chosen_subjects)
+        if len(self._chosen_subjects) == 0:
+            raise NoSubjectsChosenError('You have not chosen any subjects!')
+        
+        self._questions = self._question_repo.get_questions([self._user.username, *[i for i in self._chosen_subjects], amount])
+
+        return self._questions
+    
+    def get_current_questions(self):
+        return self._questions
 
 learning_service = LearningService()

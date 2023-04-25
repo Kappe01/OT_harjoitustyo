@@ -2,6 +2,7 @@ from ui.login_view import LoginView
 from ui.create_user_view import CreateUserView
 from ui.main_view import MainView
 from ui.new_question_view import NewQuestionView
+from ui.questions_view import QuestionsView
 
 class UI:
     def __init__(self, root):
@@ -66,7 +67,9 @@ class UI:
     def _show_question_view(self):
         self._hide_current_view()
 
-        self._current_view = None #Tähän question view luokka
+        self._current_view = QuestionsView(
+            self._root
+        )
 
         self._current_view.pack()
 

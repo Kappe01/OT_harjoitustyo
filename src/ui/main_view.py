@@ -1,5 +1,5 @@
-from tkinter import ttk, constants, IntVar
-from services.learning_services import learning_service
+from tkinter import ttk, constants, IntVar, StringVar
+from services.learning_services import learning_service, NoSubjectsChosenError
 
 class SubjectListView:
     def __init__(self, root, subjects, checkbox_handler):
@@ -53,9 +53,12 @@ class MainView:
         self._handle_question = handle_question
         self._handle_results_view = handle_results_view
         self._user = learning_service.get_current_user()
+        self._amount_spinbox_field = None
         self._frame = None
         self._subjects_list_view = None
         self._subjects_list_frame = None
+        self._error_variable = None
+        self._error_label = None
 
         self._init()
 
@@ -65,11 +68,24 @@ class MainView:
     def destroy(self):
         self._frame.destroy()
     
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
+
     def _logout_handler(self):
         learning_service.logout()
         self._handle_logout()
 
     def _question_handler(self):
+        amount = self._amount_spinbox_field.get()
+        try:
+            learning_service.get_questions(amount)
+        except NoSubjectsChosenError:
+            self._show_error('You have not chosen any subjects!')
+
         self._handle_question()
 
     def _new_question_handler(self):
@@ -88,6 +104,32 @@ class MainView:
             self._subjects_list_frame,
             subjects,
             self._checkbox_handler
+        )
+
+        self._amount_spinbox_field = ttk.Spinbox(
+            master=self._frame,
+            values=[str(i) for i in range(1,16)]
+        )
+        self._amount_spinbox_field.set('1')
+        amount_label = ttk.Label(
+            master=self._frame,
+            text='Amount of questions:'
+        )
+
+        amount_label.grid(
+            row=len(subjects),
+            column=0,
+            padx=5,
+            pady=5,
+            sticky=constants.W
+        )
+
+        self._amount_spinbox_field.grid(
+            row=len(subjects),
+            column=1,
+            padx=5,
+            pady=5,
+            sticky=constants.EW
         )
 
         self._subjects_list_view.pack()
@@ -131,7 +173,7 @@ class MainView:
         question_btn = ttk.Button(
             master=self._frame,
             text='Start',
-            command=self._handle_question
+            command=self._question_handler
         )
 
         new_question_btn.grid(
@@ -153,6 +195,16 @@ class MainView:
     def _init(self):
         self._frame = ttk.Frame(master=self._root)
         self._subjects_list_frame = ttk.Frame(master=self._frame)
+
+        self._error_variable = StringVar(self._frame)
+
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+
+        self._error_label.grid(padx=5, pady=5)
 
         self._init_header()
         self._init_subject_list()
