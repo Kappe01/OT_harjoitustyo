@@ -11,4 +11,5 @@
 | 18.4. | 1    | Arkkitehtuurin teko  |
 | 23.4. | 5    | wxpython -> tkinter |
 | 24.4. | 4    | wxpython -> tkinter |
-| yht   | 26   | | 
+| 25.4. | 4    | UI tekoa|
+| yht   | 30   | | 

@@ -15,3 +15,6 @@
 ## Viikko 5
 
 - Muutettu UI wxpythonista tkinteriin
+- Käyttäjä pystyy vastaamaan kysymyksiin
+- Käyttäjä pystyy tekemään uusia kysymyksiä
+- Käyttäjä ei vielä pysty katsomaan oikeaa vastausta
