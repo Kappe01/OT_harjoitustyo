@@ -1,5 +1,5 @@
 from tkinter import ttk, StringVar, constants
-from services.learning_services import *
+from services.learning_services import learning_service, InvalidCredentialsError
 
 class LoginView:
     def __init__(self, root, handle_login, handle_show_create_user_view):
@@ -25,9 +25,9 @@ class LoginView:
         password = self._password_entry.get()
 
         try:
-            #Tähän login yritys
+            learning_service.login(username, password)
             self._handle_login()
-        except:
+        except InvalidCredentialsError:
             self._show_error('Invalid username or password')
 
     def _show_error(self, message):

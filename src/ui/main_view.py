@@ -1,5 +1,5 @@
-from tkinter import ttk, constants
-from services.learning_services import *
+from tkinter import ttk, constants, IntVar
+from services.learning_services import learning_service
 
 class SubjectListView:
     def __init__(self, root, subjects, checkbox_handler):
@@ -19,10 +19,13 @@ class SubjectListView:
     def _init_subject(self, subject):
         subject_frame = ttk.Frame(master=self._frame)
 
+        var = IntVar()
+
         checkbox = ttk.Checkbutton(
             master=subject_frame,
             text=subject.subject,
-            command=lambda: self._handle_checkbox
+            variable=var,
+            command=lambda: self._handle_checkbox(subject.subject, var.get())
         )
 
         checkbox.grid(
@@ -49,12 +52,12 @@ class MainView:
         self._handle_new_question = handle_new_question
         self._handle_question = handle_question
         self._handle_results_view = handle_results_view
-        self._user = None #Tähän tapa saada current user
+        self._user = learning_service.get_current_user()
         self._frame = None
         self._subjects_list_view = None
         self._subjects_list_frame = None
 
-        self.init()
+        self._init()
 
     def pack(self):
         self._frame.pack(fill=constants.X)
@@ -63,7 +66,7 @@ class MainView:
         self._frame.destroy()
     
     def _logout_handler(self):
-        #Itse uloskirjautuminen tähän
+        learning_service.logout()
         self._handle_logout()
 
     def _question_handler(self):
@@ -72,18 +75,17 @@ class MainView:
     def _new_question_handler(self):
         self._handle_new_question()
 
-    def _checkbox_handler(self):
-        #Tähän tapa lisätä checkattu boxi listaan yms
-        self._init_subject_list()
+    def _checkbox_handler(self, subject, check):
+        learning_service.add_subject_to_list(subject, check)
     
     def _init_subject_list(self):
         if self._subjects_list_view:
             self._subjects_list_view.destroy()
 
-        subjects = None #Tapa saada kaikki aineet listasta
+        subjects = learning_service.get_subjects()
 
         self._subjects_list_view = SubjectListView(
-            self._subjects_list_view,
+            self._subjects_list_frame,
             subjects,
             self._checkbox_handler
         )

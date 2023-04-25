@@ -33,8 +33,8 @@ class UserRepo:
     def find_one_user(self, user):
         cur = self._conn.cursor()
 
-        cur.execute('SELECT * FROM users WHERE username = ? AND password = ?',
-                    (user.username, user.password))
+        cur.execute('SELECT * FROM users WHERE username = ?',
+                    (user, ))
 
         row = cur.fetchone()
 

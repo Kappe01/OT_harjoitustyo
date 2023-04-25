@@ -1,12 +1,12 @@
 from tkinter import Tk
-from ui.ui import ui
+from ui.ui import UI
 
 
 def main():
     window = Tk()
     window.title("Learning app")
 
-    ui_view = ui(window)
+    ui_view = UI(window)
     ui_view.start()
 
     window.mainloop()

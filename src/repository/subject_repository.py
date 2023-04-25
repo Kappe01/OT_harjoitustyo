@@ -33,7 +33,7 @@ class SubjectRepo:
         cur = self._conn.cursor()
 
         cur.execute(
-            'SELECT * FROM subjects WHERE username = ? OR username = all',
+            '''SELECT * FROM subjects WHERE username = 'all' OR username = ?''',
             (username, )
         )
 

@@ -1,5 +1,5 @@
 from tkinter import ttk, StringVar, constants
-from services.learning_services import *
+from services.learning_services import learning_service, UsernameExistsError
 
 class CreateUserView:
     def __init__(self, root, handle_create_user, handle_show_login_view):
@@ -31,9 +31,9 @@ class CreateUserView:
             self._show_error('Password has to be longer than 3 characters')
 
         try:
-            #Tähän koittaa tehdä käyttäjän
+            learning_service.create_user(username, password)
             self._handle_create_user()
-        except:
+        except UsernameExistsError:
             self._show_error(f'Username {username} already exists')
 
     def _show_error(self, message):

@@ -1,9 +1,10 @@
 from tkinter import ttk, constants, StringVar
+from services.learning_services import learning_service, QuestionExistserror
 
 class AnswerEntryField:
     def __init__(self, root, q_type, answer_handler):
         self._root = root
-        self._q_type = q_type
+        self._q_type = 'Text'
         self._handle_answer = answer_handler
         self._frame = None
 
@@ -74,12 +75,16 @@ class NewQuestionView:
         self._handle_add_question = handle_add_question
         self._handle_main_view = handle_main_view
         self._frame = None
-        self._user = None #Tähän tapa saada user
+        self._user = learning_service.get_current_user()
         self._question_entry = None
         self._subject_entry = None
         self._question_type_entry = None
-        self._answer_entry_view = None
-        self._answer_entry_frame = None
+        self._answer_entry = None
+        #self._answer_entry_view = None
+        #self._answer_entry_frame = None
+        self._error_variable = None
+        self._error_label = None
+
 
         self._init()
 
@@ -93,12 +98,12 @@ class NewQuestionView:
         question = self._question_entry.get()
         subject = self._subject_entry.get()
         q_type = self._question_type_entry.get()
-        #answer = self._answer_entry.get() #Tee joku tapa saada kysymykset
+        answer = self._answer_entry.get() #Väliaikainen ratkaisu
         
         try:
-            #Tähän kysymyksen lisäys yritys
+            learning_service.add_question(question, subject, q_type, answer) #Lisää vielä tapa saada vastaus
             self._handle_add_question()
-        except:
+        except QuestionExistserror:
             self._show_error('Something went wrong with adding the question, check your entrys and try again!')
     
     def _show_error(self, message):
@@ -118,10 +123,12 @@ class NewQuestionView:
 
     def _init_subject_field(self):
         subject_label = ttk.Label(master=self._frame, text='Subject:')
+        
+        subjects = learning_service.get_subjects()
 
-        subjects = None #Tapa saada kaikki subjects
-
-        self._subject_entry = ttk.Combobox(master=self._frame, values=subjects)
+        subjects_names = [i.subject for i in subjects]
+        
+        self._subject_entry = ttk.Combobox(master=self._frame, values=subjects_names)
 
         subject_label.grid(padx=5, pady=5, sticky=constants.W)
         self._subject_entry.grid(padx=5, pady=5, sticky=constants.EW)
@@ -129,32 +136,24 @@ class NewQuestionView:
     def _init_question_type_field(self):
         question_type_label = ttk.Label(master=self._frame, text='Question type:')
 
-        self._question_type_entry = ttk.Combobox(master=self._frame, values=['Text', 'True or False', 'Choose all correct answers'])
+        self._question_type_entry = ttk.Combobox(master=self._frame, values=['Text'])#, 'True or False', 'Choose all correct answers'])
 
         question_type_label.grid(padx=5, pady=5, sticky=constants.W)
         self._question_type_entry.grid(padx=5, pady=5, sticky=constants.EW)
 
-        self._init_answer_field()
-
     def _init_answer_field(self):
-        if self._answer_entry_view:
-            self._answer_entry_view.destroy()
+        answer_label = ttk.Label(master=self._frame, text='Answer:')
 
-        q_type = self._question_type_entry.get()
+        self._answer_entry = ttk.Entry(master=self._frame)
 
-        self._answer_entry_view = AnswerEntryField(
-            self._answer_entry_view,
-            q_type,
-            None #Tähän joku tapa saada vastaukset
-        )
-
-        self._answer_entry_view.pack()
+        answer_label.grid(padx=5, pady=5, sticky=constants.W)
+        self._answer_entry.grid(padx=5, pady=5, sticky=constants.EW)
 
     def _init_footer(self):
         add_question_btn = ttk.Button(
             master=self._frame,
             text='Add question',
-            command=self._handle_add_question
+            command=self._add_question_handler
         )
 
         cancel_btn = ttk.Button(
@@ -183,11 +182,19 @@ class NewQuestionView:
         self._frame = ttk.Frame(master=self._root)
         self._answer_entry_frame = ttk.Frame(master=self._frame)
 
+        self._error_variable = StringVar(self._frame)
+
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+
+        self._init_footer()
         self._init_question_field()
         self._init_subject_field()
         self._init_question_type_field()
         self._init_answer_field()
-        self._init_footer()
 
         self._answer_entry_frame.grid(
             row=1,

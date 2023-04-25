@@ -22,7 +22,7 @@ class UI:
 
         self._current_view = LoginView(
             self._root,
-            None,
+            self._show_main_view,
             self._show_create_user_view
         )
 
@@ -33,7 +33,7 @@ class UI:
 
         self._current_view = CreateUserView(
             self._root,
-            None,
+            self._show_main_view,
             self._show_login_view
         )
 
@@ -44,7 +44,7 @@ class UI:
 
         self._current_view = MainView(
             self._root,
-            None,
+            self._show_login_view,
             self._show_new_question_view,
             self._show_question_view,
             self._show_results_view
@@ -57,7 +57,7 @@ class UI:
 
         self._current_view = NewQuestionView(
             self._root,
-            None,
+            self._show_main_view,
             self._show_main_view
         )
 
