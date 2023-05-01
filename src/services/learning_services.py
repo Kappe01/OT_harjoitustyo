@@ -129,19 +129,22 @@ class LearningService:
         return user
 
     def add_question(self, question, subject, q_type, answer):
-        try:
-            question = self._question_repo.create(
-                Question(question, subject, answer, q_type, self._user.username))
-        except:
-            raise QuestionExistserror(f'Question already exists')
+        all_q = self._question_repo.get_all()
+
+        if Question(question, subject, answer, q_type, self._user.username) in all_q:
+            raise QuestionExistserror('Question already exists')
+
+        question = self._question_repo.create(
+            Question(question, subject, answer, q_type, self._user.username))
+
         return question
 
     def get_questions(self, amount):
-        if len(self._chosen_subjects) == 0:
+        if not self._chosen_subjects:
             raise NoSubjectsChosenError('You have not chosen any subjects!')
 
         self._questions = self._question_repo.get_questions(
-            [self._user.username, *[i for i in self._chosen_subjects], amount])
+            [self._user.username, self._chosen_subjects, amount])
         return self._questions
 
     def get_current_questions(self):
@@ -149,6 +152,15 @@ class LearningService:
 
     def result(self, subject, question, answer):
         self._results.append([subject, question, answer])
+
+    def reset_results(self):
+        self._results = []
+
+    def reset_subjects(self):
+        self._chosen_subjects = []
+
+    def reset_questions(self):
+        self._questions = []
 
     def get_results(self):
         return self._results

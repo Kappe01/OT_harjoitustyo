@@ -85,10 +85,10 @@ class MainView:
         amount = self._amount_spinbox_field.get()
         try:
             learning_service.get_questions(amount)
+            learning_service.reset_results()
+            self._handle_question()
         except NoSubjectsChosenError:
             self._show_error('You have not chosen any subjects!')
-
-        self._handle_question()
 
     def _new_question_handler(self):
         self._handle_new_question()
@@ -210,6 +210,8 @@ class MainView:
 
         self._error_label.grid(padx=5, pady=5)
 
+        learning_service.default_questions()
+
         self._init_header()
         self._init_subject_list()
         self._init_footer()
@@ -224,4 +226,4 @@ class MainView:
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
         self._frame.grid_columnconfigure(1, weight=0)
 
-        learning_service.default_questions()
+        self._hide_error()

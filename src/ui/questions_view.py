@@ -9,6 +9,8 @@ class QuestionView:
         self._handle_result_view = handle_results_view
         self._question = None
         self._questions = None
+        self._queston_label = None
+        self._correct_answer_label = None
         self._iterator = 0
         self._frame = None
         self._answer_entry = None
@@ -51,7 +53,8 @@ class QuestionView:
         )
 
     def _init_question(self, question):
-        question_label = ttk.Label(master=self._frame, text=question.question)
+        self._question_label = ttk.Label(
+            master=self._frame, text=question.question)
 
         answer_label = ttk.Label(master=self._frame, text='Your answer:')
 
@@ -63,7 +66,7 @@ class QuestionView:
             command=self._init_correct_answer_field(question)
         )
 
-        question_label.grid(
+        self._question_label.grid(
             row=1,
             column=1,
             padx=5,
@@ -101,7 +104,7 @@ class QuestionView:
             text='Correct answer:'
         )
 
-        correct_answer_label2 = ttk.Label(
+        self._correct_answer_label = ttk.Label(
             master=self._frame,
             text=question.answer
         )
@@ -114,7 +117,7 @@ class QuestionView:
             sticky=constants.W
         )
 
-        correct_answer_label2.grid(
+        self._correct_answer_label.grid(
             row=4,
             column=1,
             padx=5,
@@ -153,11 +156,14 @@ class QuestionView:
 
     def get_questions(self):
         self._questions = learning_service.get_current_questions()
+        learning_service.reset_subjects()
 
     def _init_start(self):
         if self._iterator >= len(self._questions):
-            self._handle_main_view()
+            learning_service.reset_questions()
+            self._handle_result_view()
             return
+
         self._init_header()
         self._init_question(self._questions[self._iterator])
         self._init_footer()

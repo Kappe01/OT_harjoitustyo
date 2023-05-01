@@ -3,6 +3,7 @@ from ui.create_user_view import CreateUserView
 from ui.main_view import MainView
 from ui.new_question_view import NewQuestionView
 from ui.questions_view import QuestionView
+from ui.results_view import ResultView
 
 
 class UI:
@@ -79,6 +80,9 @@ class UI:
     def _show_results_view(self):
         self._hide_current_view()
 
-        self._current_view = None  # Tähän results luokka
+        self._current_view = ResultView(
+            self._root,
+            self._show_main_view
+        )
 
         self._current_view.pack()

@@ -27,9 +27,11 @@ class CreateUserView:
 
         if len(username) == 0 or len(password) == 0:
             self._show_error('Username and password is required')
+            return
 
         if len(password) <= 3:
             self._show_error('Password has to be longer than 3 characters')
+            return
 
         try:
             learning_service.create_user(username, password)
@@ -55,7 +57,7 @@ class CreateUserView:
     def _init_password_field(self):
         password_label = ttk.Label(master=self._frame, text='Password')
 
-        self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry = ttk.Entry(master=self._frame, show='*')
 
         password_label.grid(padx=5, pady=5, sticky=constants.W)
         self._password_entry.grid(padx=5, pady=5, sticky=constants.EW)
