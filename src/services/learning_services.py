@@ -32,6 +32,7 @@ class NoSubjectsChosenError(Exception):
 
 
 class LearningService:
+    'Sovelluksen logiikka'
     def __init__(
             self,
             user_repo=default_user_repo,
@@ -47,6 +48,7 @@ class LearningService:
         self._results = []
 
     def default_questions(self):
+        'Lisää tietokantaan alustavat tiedot'
         try:
             self._subject_repo.new_subject(
                 Subjects('Maths', 'all'))
@@ -86,10 +88,14 @@ class LearningService:
             pass
 
     def login(self, username, password):
-
+        '''Kirjaa käyttäjän sisään
+        args:
+            username: käyttäjänimi
+            password: salasana
+        '''
         user = self._user_repo.find_one_user(username)
 
-        if not user or user.password != password:
+        if not user or user.password != password: #Tarkistaa onko salasana ja käyttäjänimi oikein
             raise InvalidCredentialsError('Invalid username or password!')
 
         self._user = user
@@ -97,6 +103,11 @@ class LearningService:
         return user
 
     def add_subject_to_list(self, subject, check):
+        '''Lisää aiheen valittujen aiheitten listaan
+        args:
+            subject: Aihe
+            check: Tarkistus onko aihe jo listassa vai ei
+        '''
         if check:
             self._chosen_subjects.append(subject)
         if not check and subject in self._chosen_subjects:
@@ -104,18 +115,28 @@ class LearningService:
         return subject
 
     def get_current_user(self):
+        'Palauttaa nykyisen käyttäjän'
         return self._user
 
     def get_users(self):
+        'Palauttaa kaikki käyttäjät'
         return self._user_repo.find_all()
 
     def get_subjects(self):
+        'Palauttaa kaikki nykyisen käyttäjän aiheet'
         return self._subject_repo.get_all_for_user(self._user.username)
 
     def logout(self):
+        'Kirjaa käyttäjän ulos'
         self._user = None
 
     def create_user(self, username, password, login=True):
+        '''Lisää käyttäjän tietokantaan
+        args: 
+            username: Käyttäjänimi
+            password: Salsana
+            login: Kirjataanko käyttäjä sisään vai ei
+        '''
         existing_user = self._user_repo.find_one_user(username)
 
         if existing_user:
@@ -129,6 +150,13 @@ class LearningService:
         return user
 
     def add_question(self, question, subject, q_type, answer):
+        '''Lisää kysymyksen tietokantaan
+        args:
+            question: Kysymys
+            subject: Kysmyksen aihe
+            q_type: Kysmyksen tyyppi
+            answer: Vastaus kysymykseen
+        '''
         all_q = self._question_repo.get_all()
 
         if Question(question, subject, answer, q_type, self._user.username) in all_q:
@@ -140,6 +168,10 @@ class LearningService:
         return question
 
     def get_questions(self, amount):
+        '''Palauttaa halutun määrän kysymyksiä
+        args:
+            amount: Haluttu määrä kysymyksiä
+        '''
         if not self._chosen_subjects:
             raise NoSubjectsChosenError('You have not chosen any subjects!')
 
@@ -148,21 +180,32 @@ class LearningService:
         return self._questions
 
     def get_current_questions(self):
+        'Palauttaa nykyiset kysymykset'
         return self._questions
 
     def result(self, subject, question, answer):
+        '''Lisää tuloksen listaan
+        args:
+            subject: Aihe
+            question: Kysymys
+            answer: Tulos
+        '''
         self._results.append([subject, question, answer])
 
     def reset_results(self):
+        'Tyhjentää tulos listan'
         self._results = []
 
     def reset_subjects(self):
+        'Tyhjentää aihe listan'
         self._chosen_subjects = []
 
     def reset_questions(self):
+        'Tyhjentää kysymys listan'
         self._questions = []
 
     def get_results(self):
+        'Palauttaa tulos listan'
         return self._results
 
 
