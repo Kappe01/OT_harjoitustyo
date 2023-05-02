@@ -11,5 +11,6 @@
 | 18.4. | 1    | Arkkitehtuurin teko  |
 | 23.4. | 5    | wxpython -> tkinter |
 | 24.4. | 4    | wxpython -> tkinter |
-| 25.4. | 4    | UI tekoa|
-| yht   | 30   | | 
+| 25.4. | 4    | UI tekoa |
+| 1.5.  | 5    | Results ikkunan toteutus ja bugi korjauksia |
+| yht   | 35   | | 

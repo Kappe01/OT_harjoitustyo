@@ -18,3 +18,10 @@
 - Käyttäjä pystyy vastaamaan kysymyksiin
 - Käyttäjä pystyy tekemään uusia kysymyksiä
 - Käyttäjä ei vielä pysty katsomaan oikeaa vastausta
+
+## Viikko 6
+
+- Lisätty results näkymä
+- Kirjoitettu docstringiä
+- Testikattavuutta lisätty
+- Alustava arkkithetuuri kuvaus

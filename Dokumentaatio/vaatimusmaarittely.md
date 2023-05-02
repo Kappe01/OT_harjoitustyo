@@ -12,22 +12,22 @@ Alkuvaiheessa sovelluksessa on vain yksi käyttäjä eli oppilas. Myöhemmin saa
 
 ### Ennen kirjautumista
 
-- Käyttäjä voi luoda omat tunnukset 
-	- käyttäjänimen tulee olla uniikki ja salasanan vähintään 3 merkkiä pitkä
-- Käyttäjä voi kirjautua sisään
+- Käyttäjä voi luoda omat tunnukset _tehty_
+	- käyttäjänimen tulee olla uniikki ja salasanan vähintään 3 merkkiä pitkä _tehty_
+- Käyttäjä voi kirjautua sisään _tehty_
 
 ### Kirjautumisen jälkeen
 
-- Käyttäjä voi aloittaa harjoitus session
-	- Voidaan valita kuinka monta kysymystä ja mistä aiheista kysymykset on
-	- Alkuun aiheita on kolme (Matikka, fysiikka sekä ohjelmointi ja kaikissa on 5 kysymystä oletuksena
-	- Kun käyttäjä aloittaa session näkee hän kysymyksen ja mahdollisuuden lisätä vastauksen
+- Käyttäjä voi aloittaa harjoitus session _tehty_
+	- Voidaan valita kuinka monta kysymystä ja mistä aiheista kysymykset on _tehty_
+	- Alkuun aiheita on kolme Matikka, fysiikka sekä ohjelmointi ja kaikissa on 3 kysymystä oletuksena _tehty_
+	- Kun käyttäjä aloittaa session näkee hän kysymyksen ja mahdollisuuden lisätä vastauksen _tehty_
 	- Kun vastaus on annettu näkee käyttäjä mallivastauksen ja voi itse tulikta onko vastaus oikein vai ei (paitsi jos on monivalinta kysymykseen tulee vastaus automaattisesti) ja sitten siirtyä seuraavaan kysymykseen.
-	- Kun kaikki kysymykset on vastattu pääsee käyttäjä näkemään mihin kysymyksiin on vastannut ja onko vastannut oikein vai ei
+	- Kun kaikki kysymykset on vastattu pääsee käyttäjä näkemään mihin kysymyksiin on vastannut ja onko vastannut oikein vai ei _tehty_
 - Käyttäjä voi lisätä uusia kysymyksiä
-	- Uuteen kysymykseen pitää antaa aihe, kysymys ja malli vastaus.
-- Käyttäjä näkee viimeisimmät tulokset
-- Käyttäjä voi kirjautua ulos
+	- Uuteen kysymykseen pitää antaa aihe, kysymys ja malli vastaus. _tehty_
+- Käyttäjä näkee viimeisimmät tulokset _tehty_
+- Käyttäjä voi kirjautua ulos _tehty_
 
 ## Jatkokehitysideoita
 
