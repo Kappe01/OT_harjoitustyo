@@ -44,7 +44,7 @@ class TestQuestionsRepo(unittest.TestCase):
         question_repo.create(self.programming)
 
         questions = question_repo.get_questions(
-            [self.user_nipsu.username, 'Maths', 2])
+            [self.user_muumi.username, 'Programming', 1])
 
-        self.assertEqual(len(questions), 2)
-        self.assertEqual(questions[0].question, '2+2')
+        self.assertEqual(len(questions), 1)
+        self.assertEqual(questions[0].question, 'One programming language')
