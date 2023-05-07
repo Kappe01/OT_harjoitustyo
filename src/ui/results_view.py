@@ -3,6 +3,7 @@ from services.learning_services import learning_service
 
 
 class ResultListView:
+    'Näyttää tulokset listana'
     def __init__(self, root, results):
         self._root = root
         self._results = results
@@ -11,12 +12,15 @@ class ResultListView:
         self._init()
 
     def pack(self):
+        'Näyttää listan'
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        'Piilottaa listan'
         self._frame.destroy()
 
     def _init_result(self, result, value):
+        'Alustaa yhden tuloksen'
         result_frame = ttk.Frame(master=self._frame)
 
         subject = ttk.Label(master=self._frame, text=result[0])
@@ -52,6 +56,7 @@ class ResultListView:
         result_frame.grid_columnconfigure(0, weight=1)
 
     def _init(self):
+        'Alustaa listan'
         self._frame = ttk.Frame(master=self._root)
 
         for i, result in enumerate(self._results):
@@ -59,6 +64,7 @@ class ResultListView:
 
 
 class ResultView:
+    'Itse vastaus ikkuna'
     def __init__(self, root, handle_main_view):
         self._root = root
         self._handle_main_view = handle_main_view
@@ -70,12 +76,15 @@ class ResultView:
         self._init()
 
     def pack(self):
+        'Näyttää ikkunan'
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        'Piilottaa ikkunan'
         self._frame.destroy()
 
     def _init_header(self):
+        'Alustaa headerin'
         home_btn = ttk.Button(
             master=self._frame,
             text='Home',
@@ -91,6 +100,7 @@ class ResultView:
         )
 
     def _init_results(self):
+        'alustaa vastaus listan'
         if self._result_view:
             self._result_view.destroy()
         subject_label = ttk.Label(master=self._frame, text='Subject')
@@ -133,6 +143,7 @@ class ResultView:
         self._result_view.pack()
 
     def _init(self):
+        'Alustaa ikkunan'
         self._frame = ttk.Frame(master=self._root)
         self._result_frame = ttk.Frame(master=self._frame)
 

@@ -148,6 +148,16 @@ class LearningService:
             self._user = user
 
         return user
+    
+    def get_all_questions(self):
+        'Palauttaa kaikki kysymykset tietokannasta'
+
+        all_q = self._question_repo.get_all_for_one_user(self.get_current_user().username)
+
+        return all_q
+    
+    def delete_question(self, question):
+        self._question_repo.delete_one_question(question)
 
     def add_question(self, question, subject, q_type, answer):
         '''Lisää kysymyksen tietokantaan
@@ -175,8 +185,12 @@ class LearningService:
         if not self._chosen_subjects:
             raise NoSubjectsChosenError('You have not chosen any subjects!')
 
-        self._questions = self._question_repo.get_questions(
-            [self._user.username, self._chosen_subjects, amount])
+        info = [self._user.username]
+        for i in self._chosen_subjects:
+            info.append(i)
+        info.append(amount)
+
+        self._questions = self._question_repo.get_questions(info)
         return self._questions
 
     def get_current_questions(self):

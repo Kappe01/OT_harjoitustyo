@@ -3,6 +3,7 @@ from services.learning_services import learning_service, NoSubjectsChosenError
 
 
 class SubjectListView:
+    'Kohta missä näytetään kaikki aiheet'
     def __init__(self, root, subjects, checkbox_handler):
         self._root = root
         self._subjects = subjects
@@ -12,12 +13,15 @@ class SubjectListView:
         self._init()
 
     def pack(self):
+        'Näyttää kohdan'
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        'tuhoaa kohdan'
         self._frame.destroy()
 
     def _init_subject(self, subject):
+        'Näyttää aihe listan'
         subject_frame = ttk.Frame(master=self._frame)
 
         var = IntVar()
@@ -41,6 +45,7 @@ class SubjectListView:
         subject_frame.pack(fill=constants.X)
 
     def _init(self):
+        'alustaa aihe listn'
         self._frame = ttk.Frame(master=self._root)
 
         for subject in self._subjects:
@@ -48,12 +53,14 @@ class SubjectListView:
 
 
 class MainView:
-    def __init__(self, root, handle_logout, handle_new_question, handle_question, handle_results_view):
+    'Pää näkymä'
+    def __init__(self, root, handle_logout, handle_new_question, handle_question, handle_results_view, handle_settings_view):
         self._root = root
         self._handle_logout = handle_logout
         self._handle_new_question = handle_new_question
         self._handle_question = handle_question
         self._handle_results_view = handle_results_view
+        self._handle_settings_view = handle_settings_view
         self._user = learning_service.get_current_user()
         self._amount_spinbox_field = None
         self._frame = None
@@ -65,23 +72,29 @@ class MainView:
         self._init()
 
     def pack(self):
+        'Näyttää ikkunan'
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        'Tuhoaa ikkunan'
         self._frame.destroy()
 
     def _show_error(self, message):
+        'näyttää virhe ilmoituksen'
         self._error_variable.set(message)
         self._error_label.grid()
 
     def _hide_error(self):
+        'Piilottaa virhe ilmoituksen'
         self._error_label.grid_remove()
 
     def _logout_handler(self):
+        'Kirjaa käyttäjän ulos'
         learning_service.logout()
         self._handle_logout()
 
     def _question_handler(self):
+        'Lisää kysymykset listaan'
         amount = self._amount_spinbox_field.get()
         try:
             learning_service.get_questions(amount)
@@ -90,13 +103,12 @@ class MainView:
         except NoSubjectsChosenError:
             self._show_error('You have not chosen any subjects!')
 
-    def _new_question_handler(self):
-        self._handle_new_question()
-
     def _checkbox_handler(self, subject, check):
+        'Lisää aiheen listaan tai poistaa aiheen listasta'
         learning_service.add_subject_to_list(subject, check)
 
     def _init_subject_list(self):
+        'Alustaa aihe listan'
         if self._subjects_list_view:
             self._subjects_list_view.destroy()
 
@@ -118,8 +130,10 @@ class MainView:
             text='Amount of questions:'
         )
 
+        r = len(subjects) if len(subjects) > 0 else 1
+
         amount_label.grid(
-            row=len(subjects),
+            row=r,
             column=0,
             padx=5,
             pady=5,
@@ -127,7 +141,7 @@ class MainView:
         )
 
         self._amount_spinbox_field.grid(
-            row=len(subjects),
+            row=r,
             column=1,
             padx=5,
             pady=5,
@@ -137,6 +151,13 @@ class MainView:
         self._subjects_list_view.pack()
 
     def _init_header(self):
+        'alustaa headerin'
+        settings_btn = ttk.Button(
+            master=self._frame,
+            text='Settings',
+            command=self._handle_settings_view
+        )
+
         results_btn = ttk.Button(
             master=self._frame,
             text='Results',
@@ -149,6 +170,14 @@ class MainView:
             command=self._logout_handler
         )
 
+        settings_btn.grid(
+            row=0,
+            column=1,
+            padx=5,
+            pady=5,
+            sticky=constants.EW
+        )
+
         results_btn.grid(
             row=0,
             column=0,
@@ -159,13 +188,14 @@ class MainView:
 
         logout_btn.grid(
             row=0,
-            column=1,
+            column=2,
             padx=5,
             pady=5,
             sticky=constants.EW
         )
 
     def _init_footer(self):
+        'alustaa ala rivin'
         new_question_btn = ttk.Button(
             master=self._frame,
             text='New Question',
@@ -180,8 +210,10 @@ class MainView:
 
         subjects = learning_service.get_subjects()
 
+        r = len(subjects)+1 if len(subjects) > 0 else 2
+
         new_question_btn.grid(
-            row=len(subjects)+1,
+            row=r,
             column=1,
             padx=5,
             pady=5,
@@ -189,7 +221,7 @@ class MainView:
         )
 
         question_btn.grid(
-            row=len(subjects)+1,
+            row=r,
             column=0,
             padx=5,
             pady=5,
@@ -197,6 +229,7 @@ class MainView:
         )
 
     def _init(self):
+        'alustaa ikkunan'
         self._frame = ttk.Frame(master=self._root)
         self._subjects_list_frame = ttk.Frame(master=self._frame)
 
@@ -209,8 +242,6 @@ class MainView:
         )
 
         self._error_label.grid(padx=5, pady=5)
-
-        learning_service.default_questions()
 
         self._init_header()
         self._init_subject_list()

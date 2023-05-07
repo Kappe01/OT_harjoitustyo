@@ -16,6 +16,15 @@ class TestQuestionsRepo(unittest.TestCase):
         self.twoplustwo = Question('2+2', 'Maths', '4', 'Normal', 'Nipsu')
         self.programming = Question(
             'One programming language', 'Programming', 'Python', 'Normal', 'Muumi')
+        
+    def test_get_all_q_for_one_user(self):
+        question_repo.create(self.oneplusone)
+        question_repo.create(self.twoplustwo)
+        question_repo.create(self.programming)
+
+        questions = question_repo.get_all_for_one_user(self.user_muumi.username)
+
+        self.assertEqual(len(questions), 2)
 
     def test_new_question(self):
         question_repo.create(self.oneplusone)

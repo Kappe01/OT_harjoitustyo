@@ -36,6 +36,20 @@ class QuestionRepo:
         self._conn.commit()
 
         return question
+    
+    def get_all_for_one_user(self, user):
+        '''Hakee kaikki kysymykset yhdelle käyttäjälle'''
+        
+        cur = self._conn.cursor()
+
+        cur.execute(
+            '''SELECT * FROM questions WHERE username = ? OR username = "All"''',
+            (user, )
+        )
+
+        rows = cur.fetchall()
+
+        return list(map(get_question_by_row, rows))
 
     def delete_one_question(self, question):
         '''
