@@ -7,7 +7,7 @@ Lataa projektin viimeisin [release](https://github.com/Kappe01/OT_harjoitustyo/r
 Tallennukseen käytettävien tiedostojen nimiä voi halutessaan konfiguroida käynnistyshakemistossa _.env_-tiedostossa. Tiedostot luodaan automaattisesti _data_-hakemistoon, jos niitä ei siellä vielä ole. Tiedoston muoto on seuraava:
 
 ```
-DATABASE_FILENAME=db.sqlite
+DB_FILENAME=db.sqlite
 ```
 
 ## Ohjelman käynnistäminen
