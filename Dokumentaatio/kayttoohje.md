@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisin [release]() HUOM LISÄÄ LINKKI LOPPU PALAUTUKSEEN TÄHÄN lähdekoodi valitsemalla _Assets_-osion alta _Source code_.
+Lataa projektin viimeisin [release](https://github.com/Kappe01/OT_harjoitustyo/releases/tag/loppupalautus) lähdekoodi valitsemalla _Assets_-osion alta _Source code_.
 
 ## Konfigurointi
 
