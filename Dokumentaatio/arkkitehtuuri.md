@@ -10,11 +10,12 @@ UI sisältää käyttöliittymän, services sisältää sovelluslogiikan, reposi
 
 ## Käyttöliittymä 
 
-Käyttöliittymä sisältää kuusi erillistä näkymää:
+Käyttöliittymä sisältää seitsemän erillistä näkymää:
 
 - Kirjautuminen
 - Uuden käyttäjän luominen
 - Aloitus
+- Asetus näkymä
 - Kysmys näkymä
 - Uuden kysymyksen luonti
 - Tulos näkymä

@@ -25,3 +25,10 @@
 - Kirjoitettu docstringiä
 - Testikattavuutta lisätty
 - Alustava arkkithetuuri kuvaus
+
+## Viikko 7
+
+- Lisätty asetusnäkymä
+- Lisätty tapa poistaa kysmyksiä
+- Käyttäjä pystyy tarkistamaan oikean vastauksen
+- Käyttäjä pystyy lisäämään perus kysymykset nappia painamalla

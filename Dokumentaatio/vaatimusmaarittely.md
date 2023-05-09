@@ -22,12 +22,13 @@ Alkuvaiheessa sovelluksessa on vain yksi käyttäjä eli oppilas. Myöhemmin saa
 	- Voidaan valita kuinka monta kysymystä ja mistä aiheista kysymykset on _tehty_
 	- Alkuun aiheita on kolme Matikka, fysiikka sekä ohjelmointi ja kaikissa on 3 kysymystä oletuksena _tehty_
 	- Kun käyttäjä aloittaa session näkee hän kysymyksen ja mahdollisuuden lisätä vastauksen _tehty_
-	- Kun vastaus on annettu näkee käyttäjä mallivastauksen ja voi itse tulikta onko vastaus oikein vai ei (paitsi jos on monivalinta kysymykseen tulee vastaus automaattisesti) ja sitten siirtyä seuraavaan kysymykseen.
+	- Kun vastaus on annettu näkee käyttäjä mallivastauksen ja voi itse tulikta onko vastaus oikein vai ei ja siirtyä sitten seuraavaan kysymykseen. _tehty_
 	- Kun kaikki kysymykset on vastattu pääsee käyttäjä näkemään mihin kysymyksiin on vastannut ja onko vastannut oikein vai ei _tehty_
 - Käyttäjä voi lisätä uusia kysymyksiä
 	- Uuteen kysymykseen pitää antaa aihe, kysymys ja malli vastaus. _tehty_
 - Käyttäjä näkee viimeisimmät tulokset _tehty_
 - Käyttäjä voi kirjautua ulos _tehty_
+- Kaikkien tehtävien tarkastelu ja niitten mahdollinen poisto tai muuntelu virheitten varalta. _tehty_
 
 ## Jatkokehitysideoita
 
@@ -36,4 +37,4 @@ Alkuvaiheessa sovelluksessa on vain yksi käyttäjä eli oppilas. Myöhemmin saa
 - Opettaja voisi lisätät tehtäviä oppilailleen.
 - Aiheitten sisälle voisi lisätä kurssi tyylii kysymyksiä
 	- Esimerkiksi lukion kurssit
-- Kaikkien tehtävien tarkastelu ja niitten mahdollinen poisto tai muuntelu virheitten varalta.
+

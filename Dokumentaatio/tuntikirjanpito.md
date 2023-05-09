@@ -13,4 +13,5 @@
 | 24.4. | 4    | wxpython -> tkinter |
 | 25.4. | 4    | UI tekoa |
 | 1.5.  | 5    | Results ikkunan toteutus ja bugi korjauksia |
-| yht   | 35   | | 
+| 7.5.  | 4    | Asetus ikkunan teko sekä oikean vastauksen tarkistuksen lisäys |
+| yht   | 39   | | 
