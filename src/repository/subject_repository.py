@@ -9,6 +9,7 @@ def get_subjects_by_row(row):
 
 class SubjectRepo:
     'Aiheitten tietokanta toiminnot'
+
     def __init__(self, conn):
         '''Luokan konstruktori
         args:

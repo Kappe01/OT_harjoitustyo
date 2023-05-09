@@ -33,6 +33,7 @@ class NoSubjectsChosenError(Exception):
 
 class LearningService:
     'Sovelluksen logiikka'
+
     def __init__(
             self,
             user_repo=default_user_repo,
@@ -95,7 +96,7 @@ class LearningService:
         '''
         user = self._user_repo.find_one_user(username)
 
-        if not user or user.password != password: #Tarkistaa onko salasana ja käyttäjänimi oikein
+        if not user or user.password != password:  # Tarkistaa onko salasana ja käyttäjänimi oikein
             raise InvalidCredentialsError('Invalid username or password!')
 
         self._user = user
@@ -148,14 +149,15 @@ class LearningService:
             self._user = user
 
         return user
-    
+
     def get_all_questions(self):
         'Palauttaa kaikki kysymykset tietokannasta'
 
-        all_q = self._question_repo.get_all_for_one_user(self.get_current_user().username)
+        all_q = self._question_repo.get_all_for_one_user(
+            self.get_current_user().username)
 
         return all_q
-    
+
     def delete_question(self, question):
         self._question_repo.delete_one_question(question)
 

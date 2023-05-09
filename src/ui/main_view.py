@@ -4,6 +4,7 @@ from services.learning_services import learning_service, NoSubjectsChosenError
 
 class SubjectListView:
     'Kohta missä näytetään kaikki aiheet'
+
     def __init__(self, root, subjects, checkbox_handler):
         self._root = root
         self._subjects = subjects
@@ -54,6 +55,7 @@ class SubjectListView:
 
 class MainView:
     'Pää näkymä'
+
     def __init__(self, root, handle_logout, handle_new_question, handle_question, handle_results_view, handle_settings_view):
         self._root = root
         self._handle_logout = handle_logout

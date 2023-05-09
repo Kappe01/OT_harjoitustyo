@@ -9,6 +9,7 @@ def get_user_by_row(row):
 
 class UserRepo:
     'Käyttäjä luokan tietokanta toiminnot'
+
     def __init__(self, conn):
         '''Luokan konstruktori
         args:

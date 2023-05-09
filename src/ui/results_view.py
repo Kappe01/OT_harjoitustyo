@@ -4,6 +4,7 @@ from services.learning_services import learning_service
 
 class ResultListView:
     'Näyttää tulokset listana'
+
     def __init__(self, root, results):
         self._root = root
         self._results = results
@@ -65,6 +66,7 @@ class ResultListView:
 
 class ResultView:
     'Itse vastaus ikkuna'
+
     def __init__(self, root, handle_main_view):
         self._root = root
         self._handle_main_view = handle_main_view

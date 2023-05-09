@@ -1,8 +1,10 @@
 from tkinter import ttk, constants
 from services.learning_services import learning_service
 
+
 class AnswerView:
     'Vastaus kohta'
+
     def __init__(self, root, question):
         self._root = root
         self._question = question
@@ -59,6 +61,7 @@ class AnswerView:
 
 class QuestionFrame:
     'Kysymys kohta'
+
     def __init__(self, root, question, handle_correct, handle_incorrect):
         self._root = root
         self._question = question
@@ -89,7 +92,6 @@ class QuestionFrame:
         )
 
         self._answer_view.pack()
-
 
     def _init_question(self):
         'Alustaa kysymyksen'
@@ -186,6 +188,7 @@ class QuestionFrame:
 
 class QuestionView:
     'Itse näkymä'
+
     def __init__(self, root, handle_main_view, handle_results_view):
         self._root = root
         self._handle_main_view = handle_main_view

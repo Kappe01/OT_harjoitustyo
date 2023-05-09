@@ -16,12 +16,15 @@ class LoginView:
         self._init()
 
     def pack(self):
+        'näyttää ikkunan'
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        'Tuhoaa ikkunan'
         self._frame.destroy()
 
     def _login_handler(self):
+        'Hoitaa sisäänkirjautumisen'
         username = self._username_entry.get()
         password = self._password_entry.get()
 
@@ -32,13 +35,16 @@ class LoginView:
             self._show_error('Invalid username or password')
 
     def _show_error(self, message):
+        'näyttää virhe ilmoituksen'
         self._error_variable.set(message)
         self._error_label.grid()
 
     def _hide_error(self):
+        'Poistaa virhe ilmoituksen'
         self._error_label.grid_remove()
 
     def _init_username_field(self):
+        'alustaa käyttäjätunnus kohdan'
         username_label = ttk.Label(master=self._frame, text="Username")
 
         self._username_entry = ttk.Entry(master=self._frame)
@@ -47,6 +53,7 @@ class LoginView:
         self._username_entry.grid(padx=5, pady=5, sticky=constants.EW)
 
     def _init_password_field(self):
+        'alustaa salasana kohdan'
         password_label = ttk.Label(master=self._frame, text="Password")
 
         self._password_entry = ttk.Entry(master=self._frame, show='*')
@@ -55,6 +62,7 @@ class LoginView:
         self._password_entry.grid(padx=5, pady=5, sticky=constants.EW)
 
     def _init(self):
+        'Alustaa koko ikkunan'
         self._frame = ttk.Frame(master=self._root)
 
         self._error_variable = StringVar(self._frame)

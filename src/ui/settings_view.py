@@ -1,8 +1,10 @@
 from tkinter import ttk, constants
 from services.learning_services import learning_service
 
+
 class DeleteQListView:
     'Näyttää kaikki käyttäjän kysymykset listana'
+
     def __init__(self, root, questions, handle_button):
         self._root = root
         self._questions = questions
@@ -19,7 +21,7 @@ class DeleteQListView:
         'Piilottaa listan'
         self._frame.destroy()
 
-    def _init_questions(self, question,i):
+    def _init_questions(self, question, i):
         'alustaa yhden kysymyksen'
         delete_frame = ttk.Frame(
             master=self._frame
@@ -90,6 +92,7 @@ class DeleteQListView:
 
 class SettingsView:
     'Asetus näkymä'
+
     def __init__(self, root, handle_main_view):
         self._root = root
         self._handle_main_view = handle_main_view
@@ -153,7 +156,7 @@ class SettingsView:
             self._delete_question_list_view.destroy()
 
         all_q = learning_service.get_all_questions()
-        
+
         self._delete_question_list_view = DeleteQListView(
             self._delete_question_frame_view,
             all_q,
@@ -179,5 +182,3 @@ class SettingsView:
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
         self._frame.grid_columnconfigure(1, weight=0)
-
-        

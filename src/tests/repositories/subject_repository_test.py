@@ -5,6 +5,7 @@ from repository.subject_repository import subject_repo
 from repository.user_repository import user_repo
 from entities.user import User
 
+
 class TestSubjectRepository(unittest.TestCase):
     def setUp(self) -> None:
         user_repo.delete_all_users()
@@ -32,7 +33,7 @@ class TestSubjectRepository(unittest.TestCase):
     def test_delete_subject(self):
         subject_repo.new_subject(self.programming)
 
-        self.assertEqual(len(subject_repo.get_all()),1)
+        self.assertEqual(len(subject_repo.get_all()), 1)
 
         subject_repo.delete_subject(self.programming)
 

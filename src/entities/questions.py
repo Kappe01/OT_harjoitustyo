@@ -1,5 +1,6 @@
 class Question:
     'Luokka joka kuvaa yhtä kysymystä'
+
     def __init__(self, question, subject, answer, q_type, username):
         '''
         Luokan konstruktori

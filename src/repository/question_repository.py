@@ -11,6 +11,7 @@ def get_question_by_row(row):
 
 class QuestionRepo:
     'Kysymys luokan tietokanta funktiot'
+
     def __init__(self, conn):
         '''
         Luokan konstruktori
@@ -36,10 +37,10 @@ class QuestionRepo:
         self._conn.commit()
 
         return question
-    
+
     def get_all_for_one_user(self, user):
         '''Hakee kaikki kysymykset yhdelle käyttäjälle'''
-        
+
         cur = self._conn.cursor()
 
         cur.execute(
@@ -78,7 +79,7 @@ class QuestionRepo:
         '''Hakee halutun verran kysymyksiä tietokannasta
         args:
             info: Tietoa halutusta kysymyksestä
-            
+
         returns:
             listan kysymys olioita
         '''

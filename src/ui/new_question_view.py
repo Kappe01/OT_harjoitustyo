@@ -1,6 +1,7 @@
 from tkinter import ttk, constants, StringVar
 from services.learning_services import learning_service, QuestionExistserror
 
+
 class NewQuestionView:
     def __init__(self, root, handle_add_question, handle_main_view):
         self._root = root
