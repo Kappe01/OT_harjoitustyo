@@ -9,6 +9,8 @@ Sovelluksen toiminta on testattu Python-versiolla `3.8`.
 ## Release
 
 - [Release 1](https://github.com/Kappe01/OT_harjoitustyo/releases/tag/viikko5)
+- [Release 2](https://github.com/Kappe01/OT_harjoitustyo/releases/tag/viikko6)
+- [Loppupalautus](https://github.com/kappe01/OT_harjoitustyo/releases/tag/loppupalautus)
 
 ## Dokumentaatio
 
